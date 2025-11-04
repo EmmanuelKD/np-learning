@@ -58,3 +58,25 @@ print("\nModulo:\n", a%vec)
 print("\nElementwise maximum:\n", np.maximum(a, vec))
 print("\nEqual:\n", a == vec)
 print("\nGreater:\n", a > vec)
+
+print("====================")
+
+a = np.arange(10, dtype=np.int32).reshape((2,5))
+b = (a % 3 == 0)    # True for elements divisible by 3
+print("The 2D 'b' array:\n", b)
+print("   ... its shape is", b.shape)
+print("   ... its data type is", b.dtype)  # np.bool_
+
+c = (a % 2 != 0)    # True for elements not divisible by 2 (odd numbers)
+for i in range(2):
+  for j in range(5):
+    c[i,j] = a[i,j] % 2 != 0
+
+print("\nThe 2D 'c' array:\n", c)
+print("   ... its shape is", c.shape)
+print("   ... its data type is", c.dtype)  # np.bool_
+
+print("\nElementwise logical AND of the two arrays:\n", b & c)  # 'and' (1.2 and 1) => (True and True)
+np.logical_and(b, c)
+print("\nElementwise logical OR of the two arrays:\n", b | c)
+print("\nElementwise logical NOT of array 'b':\n", ~b)
